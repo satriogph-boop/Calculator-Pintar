@@ -104,3 +104,40 @@ const previousOperandTextElement = document.getElementById('previous-operand');
 const currentOperandTextElement = document.getElementById('current-operand');
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+
+// --- Fitur v2: Web Audio API untuk Suara ---
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playBeep(frequency, type = 'sine', duration = 0.1) {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+
+    // Fade out suara agar tidak kasar (klik)
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + duration);
+}
+
+// Tambahkan event listener ke semua tombol
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', () => {
+        if (button.classList.contains('btn-operator') || button.classList.contains('btn-equal')) {
+            playBeep(440, 'triangle', 0.1); // Nada sedang untuk operator
+        } else if (button.classList.contains('btn-clear') || button.classList.contains('btn-delete')) {
+            playBeep(300, 'square', 0.15); // Nada rendah & beda jenis untuk hapus
+        } else {
+            playBeep(600, 'sine', 0.1); // Nada tinggi untuk angka
+        }
+    });
+});
