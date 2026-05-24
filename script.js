@@ -132,7 +132,9 @@ function playBeep(frequency, type = 'sine', duration = 0.1) {
 // Tambahkan event listener ke semua tombol
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', () => {
-        if (button.classList.contains('btn-operator') || button.classList.contains('btn-equal')) {
+        if (button.classList.contains('btn-equal')) {
+            // Suara error ditangani langsung oleh fungsi showPaywall()
+        } else if (button.classList.contains('btn-operator')) {
             playBeep(440, 'triangle', 0.1); // Nada sedang untuk operator
         } else if (button.classList.contains('btn-clear') || button.classList.contains('btn-delete')) {
             playBeep(300, 'square', 0.15); // Nada rendah & beda jenis untuk hapus
@@ -141,3 +143,21 @@ document.querySelectorAll('.btn').forEach(button => {
         }
     });
 });
+
+// --- Fitur v3: Paywall Modal ---
+function showPaywall() {
+    // Suara error (dua nada berurutan)
+    playBeep(200, 'sawtooth', 0.15);
+    setTimeout(() => playBeep(150, 'sawtooth', 0.3), 150);
+
+    const modal = document.getElementById('paywall-modal');
+    modal.classList.add('active');
+}
+
+function closeModal() {
+    const modal = document.getElementById('paywall-modal');
+    modal.classList.remove('active');
+    
+    // Opsional: jalankan perhitungan sesungguhnya setelah modal ditutup (kalau mau berbaik hati)
+    // calculator.compute(); 
+}

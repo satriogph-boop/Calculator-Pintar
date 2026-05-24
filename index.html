@@ -35,9 +35,19 @@
 
             <button class="btn" onclick="calculator.appendNumber('0')">0</button>
             <button class="btn" onclick="calculator.appendNumber('.')">.</button>
-            <button class="btn btn-equal span-two" onclick="calculator.compute()">=</button>
+            <button class="btn btn-equal span-two" onclick="showPaywall()">=</button>
         </div>
     </div>
+
+    <!-- Paywall Modal -->
+    <div class="modal-overlay" id="paywall-modal">
+        <div class="modal-content">
+            <h2>Peringatan Premium! 💸</h2>
+            <p>Ups! Untuk melihat hasil perhitungan ini, Anda harus berlangganan versi Premium seharga <strong>Rp 15.000/bulan</strong>.</p>
+            <button class="btn-subscribe" onclick="closeModal()">Nanti Saja</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
