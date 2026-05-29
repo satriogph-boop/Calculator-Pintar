@@ -185,11 +185,12 @@ const historyListElement = document.getElementById('history-list');
 const clearHistoryButton = document.getElementById('clear-history');
 const themeToggleButton = document.getElementById('theme-toggle');
 
-var calculator = new Calculator(
+const calculator = new Calculator(
     previousOperandTextElement,
     currentOperandTextElement,
     historyListElement
 );
+window.calculator = calculator;
 
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 const audioCtx = AudioContextClass ? new AudioContextClass() : null;

@@ -1,0 +1,23 @@
+{
+  "name": "calculator-pintar",
+  "version": "1.0.0",
+  "description": "Kalkulator web modern dengan riwayat perhitungan, dukungan keyboard, tema gelap/terang, dan efek suara.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "keywords": [
+    "calculator",
+    "javascript",
+    "html",
+    "css",
+    "vite"
+  ],
+  "author": "satriogph-boop",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.0.14"
+  }
+}
