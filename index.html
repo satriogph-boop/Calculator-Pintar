@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Calculator</title>
+    <title>Calculator Pintar</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="calculator">
+        <div class="topbar">
+            <div>
+                <p class="eyebrow">Calculator Pintar</p>
+                <h1>Kalkulator</h1>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ganti tema">Dark</button>
+        </div>
+
         <div class="display">
             <div class="previous-operand" id="previous-operand"></div>
             <div class="current-operand" id="current-operand">0</div>
         </div>
+
         <div class="keypad">
             <button class="btn btn-clear span-two" onclick="calculator.clear()">AC</button>
             <button class="btn btn-delete" onclick="calculator.delete()">DEL</button>
-            <button class="btn btn-operator" onclick="calculator.chooseOperation('÷')">÷</button>
+            <button class="btn btn-operator" onclick="calculator.chooseOperation('/')">&divide;</button>
 
             <button class="btn" onclick="calculator.appendNumber('7')">7</button>
             <button class="btn" onclick="calculator.appendNumber('8')">8</button>
             <button class="btn" onclick="calculator.appendNumber('9')">9</button>
-            <button class="btn btn-operator" onclick="calculator.chooseOperation('×')">×</button>
+            <button class="btn btn-operator" onclick="calculator.chooseOperation('*')">&times;</button>
 
             <button class="btn" onclick="calculator.appendNumber('4')">4</button>
             <button class="btn" onclick="calculator.appendNumber('5')">5</button>
@@ -35,16 +44,17 @@
 
             <button class="btn" onclick="calculator.appendNumber('0')">0</button>
             <button class="btn" onclick="calculator.appendNumber('.')">.</button>
-            <button class="btn btn-equal span-two" onclick="showPaywall()">=</button>
+            <button class="btn btn-equal span-two" onclick="calculator.compute()">=</button>
         </div>
-    </div>
 
-    <!-- Paywall Modal -->
-    <div class="modal-overlay" id="paywall-modal">
-        <div class="modal-content">
-            <h2>Peringatan Premium! 💸</h2>
-            <p>Ups! Untuk melihat hasil perhitungan ini, Anda harus berlangganan versi Premium seharga <strong>Rp 15.000/bulan</strong>.</p>
-            <button class="btn-subscribe" onclick="closeModal()">Nanti Saja</button>
+        <div class="history-panel">
+            <div class="history-header">
+                <h2>Riwayat</h2>
+                <button class="history-clear" id="clear-history" type="button">Hapus</button>
+            </div>
+            <ul class="history-list" id="history-list">
+                <li class="history-empty">Belum ada perhitungan</li>
+            </ul>
         </div>
     </div>
 
