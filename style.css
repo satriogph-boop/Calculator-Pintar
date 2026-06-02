@@ -1,5 +1,5 @@
 :root {
-    --page-bg: linear-gradient(135deg, #17202a, #2a6f73 55%, #b65f45);
+    --page-bg: #ffffff;
     --panel-bg: rgba(18, 28, 36, 0.78);
     --panel-border: rgba(255, 255, 255, 0.14);
     --display-bg: rgba(0, 0, 0, 0.22);
@@ -18,7 +18,7 @@
 }
 
 body.light-theme {
-    --page-bg: linear-gradient(135deg, #f7f7f2, #b7d8d6 55%, #f1b18f);
+    --page-bg: #ffffff;
     --panel-bg: rgba(255, 255, 255, 0.82);
     --panel-border: rgba(31, 45, 50, 0.12);
     --display-bg: rgba(28, 43, 48, 0.08);
